@@ -51,14 +51,14 @@ data$name <- gsub('Copy of ', '',data$name)
 
 for (meme in 1:nrow(raw_dat)) {
   
-  drive_download(file = data$name[meme], path = paste0('Memes/TodaysMemesFolder/',data$name[meme]),overwrite = TRUE)
+  drive_download(file = data$name[meme], path = paste0('./Memes/TodaysMemesFolder/',data$name[meme]),overwrite = TRUE)
 }
 
 
 #Get the list of all memes
-AllMemes = list.files(path = "Memes/AllMemesFolder", pattern = ".jpg", full.names = TRUE)
+AllMemes = list.files(path = "./Memes/AllMemesFolder", pattern = ".jpg", full.names = TRUE)
 
-TodaysMemes = list.files(path = "Memes/TodaysMemesFolder", pattern = ".jpg", full.names = TRUE)
+TodaysMemes = list.files(path = "./Memes/TodaysMemesFolder", pattern = ".jpg", full.names = TRUE)
 
 
 
@@ -67,10 +67,10 @@ tweet_meme <- function(){
 if(length(TodaysMemes)>0){
   
   current_meme = sample(TodaysMemes, size = 1,replace = TRUE)
-  previous_meme <- readRDS('R/previous_meme.RDS')
+  previous_meme <- readRDS('./R/previous_meme.RDS')
   
-  new_meme <- gsub('Memes/TodaysMemesFolder/','',current_meme)
-  old_meme <- gsub('Memes/TodaysMemesFolder/','',previous_meme)
+  new_meme <- gsub('./Memes/TodaysMemesFolder/','',current_meme)
+  old_meme <- gsub('./Memes/TodaysMemesFolder/','',previous_meme)
   
   repeat{
     
@@ -85,7 +85,7 @@ if(length(TodaysMemes)>0){
       
     }else{
       
-      TodaysMemes = list.files(path = "Memes/TodaysMemesFolder", pattern = ".jpg", full.names = TRUE)
+      TodaysMemes = list.files(path = "./Memes/TodaysMemesFolder", pattern = ".jpg", full.names = TRUE)
       current_meme = sample(TodaysMemes, size = 1,replace = TRUE)
       
     }
@@ -97,11 +97,11 @@ if(length(TodaysMemes)>0){
 }else{
  
   current_meme = sample(AllMemes, size = 1,replace = TRUE)
-  AllMemes = list.files(path = "Memes/AllMemesFolder", pattern = ".jpg", full.names = TRUE)
-  previous_meme <- readRDS('R/previous_meme.RDS')
+  AllMemes = list.files(path = "./Memes/AllMemesFolder", pattern = ".jpg", full.names = TRUE)
+  previous_meme <- readRDS('./R/previous_meme.RDS')
   
-  new_meme <- gsub('Memes/AllMemesFolder/','',current_meme)
-  old_meme <- gsub('Memes/TodaysMemesFolder/','',previous_meme)
+  new_meme <- gsub('./Memes/AllMemesFolder/','',current_meme)
+  old_meme <- gsub('./Memes/TodaysMemesFolder/','',previous_meme)
   
   repeat{
     if(new_meme != old_meme){
@@ -114,7 +114,7 @@ if(length(TodaysMemes)>0){
       
     }else{
       
-      AllMemes = list.files(path = "Memes/AllMemesFolder", pattern = ".jpg", full.names = TRUE)
+      AllMemes = list.files(path = "./Memes/AllMemesFolder", pattern = ".jpg", full.names = TRUE)
       current_meme = sample(AllMemes, size = 1,replace = TRUE)
     }
     
