@@ -18,7 +18,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ${{ env.R_LIBS_USER }}
-          key: ${{ runner.os }}-packages_v1
+          key: ${{ runner.os }}-packages
           restore-keys: |
             ${{ runner.os }}-
             
