@@ -2,6 +2,8 @@ on:
   # schedule:
   #   - cron: '*/3 * * * *'
   push:
+     branches:
+         - 'main'
 
 name: deploy-tweet-bot
 
@@ -47,5 +49,5 @@ jobs:
           git config --local user.name "GitHub Actions"
           git add --all
           git commit -am "just tweeted.."
-          git push main
+          git push 
         
