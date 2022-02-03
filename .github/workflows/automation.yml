@@ -15,14 +15,6 @@ jobs:
       - name: Install packages
          run: Rscript -e 'install.packages(c("googledrive","rtweet","forcats"), dependencies = TRUE)'
 
-     
-        
-      - name: Cache R packages
-        uses: actions/cache@v1
-        with:
-          path: ${{ env.R_LIBS_USER }}
-          key: ${{ runner.os }}
-          restore-keys: ${{ runner.os }}
         
       - name: Tweet MeMe
         env:
