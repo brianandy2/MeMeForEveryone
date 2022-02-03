@@ -12,7 +12,6 @@ token <- create_token(
 )
 
 
-
 drive_auth(path = Sys.getenv("GOOGLE_AUTHENTICATION_CREDENTIALS"))
 raw_dat <- drive_ls(as_id(Sys.getenv('MEME_FOLDER_1')))
 
@@ -55,7 +54,6 @@ for (meme in 1:nrow(raw_dat)) {
   
   drive_download(file = data$name[meme], path = paste0('Memes/TodaysMemesFolder/',data$name[meme]),overwrite = TRUE)
 }
-
 
 
 #Get the list of all memes
