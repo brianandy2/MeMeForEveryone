@@ -1,7 +1,7 @@
 name: deploy-tweet-bot
 on:
   schedule:
-    - cron: '*/3 * * * *'
+    - cron: '*0 * * * *'
   #push:
      
 
@@ -36,7 +36,7 @@ jobs:
           git config --global user.email "castt62@gmail.com.noreply.github.com"
           git config --global user.name "brianandy2"
           git add --all
-          git commit -am "just tweetet.."
+          git commit -am "just tweeted.."
           git push 
         
         
