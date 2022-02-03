@@ -1,7 +1,7 @@
 name: deploy-tweet-bot
 on:
   schedule:
-    - cron: '*0 * * * *'
+    - cron: '0 * * * *'
   #push:
      
 
