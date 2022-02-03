@@ -21,10 +21,7 @@ jobs:
           install.packages('googledrive')
           install.packages('rtweet')
           install.packages('forcats')
-<<<<<<< HEAD
           install.packages('remotes')
-=======
->>>>>>> 565094d31626e7b4b8343ff3273a8ff8ec057efa
           saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
           writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
         shell: Rscript {0}
