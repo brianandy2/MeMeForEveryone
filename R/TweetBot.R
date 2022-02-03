@@ -82,7 +82,8 @@ if(length(TodaysMemes)>0){
       print('Todays tweet')
       tweeting_meme <- post_tweet(status = '#meme #memeforeveryone #memes #ilovememes #memesdaily',media = current_meme,token = token)
       file.copy(current_meme, "./Memes/AllMemesFolder")
-      
+      delete_meme <- data[data$name==new_meme,][2]
+      drive_rm(delete_meme$id[1])
       break
       
     }else{
@@ -110,8 +111,8 @@ if(length(TodaysMemes)>0){
       
       print('all tweet')
       tweeting_meme <- post_tweet(status = '#meme #memeforeveryone #memes #ilovememes #memesdaily',media = current_meme,token = token)
-      # delete_meme <- data[data$name==new_meme,][2]
-      # drive_rm(delete_meme$id[1])
+       delete_meme <- data[data$name==new_meme,][2]
+       drive_rm(delete_meme$id[1])
       break
       
     }else{
