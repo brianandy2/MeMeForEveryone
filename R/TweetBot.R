@@ -45,6 +45,10 @@ for (dp_names in dp_name) {
   
 }
 
+previous_meme <- readRDS('./R/previous_meme.RDS')
+
+already_tweeted <- gsub('./Memes/TodaysMemesFolder/','',previous_meme)
+
 already_tweeted <- data %>% filter(name%in%already_tweeted)
 
 drive_rm(already_tweeted$id[1])
@@ -60,7 +64,7 @@ for (meme in 1:nrow(raw_dat)) {
   drive_download(file = data$name[meme], path = paste0('./Memes/TodaysMemesFolder/',data$name[meme]),overwrite = TRUE)
 }
 
-previous_meme <- readRDS('./R/previous_meme.RDS')
+
 
 #Get the list of all memes
 AllMemes = list.files(path = "./Memes/AllMemesFolder", pattern = ".jpg", full.names = TRUE)
