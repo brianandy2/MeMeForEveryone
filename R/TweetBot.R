@@ -1,6 +1,7 @@
 library(rtweet)
 library(googledrive)
 library(forcats)
+library(dplyr)
 
 token <- create_token(
   app = Sys.getenv("TWEET_BOT"),
