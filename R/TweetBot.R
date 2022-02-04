@@ -45,7 +45,7 @@ for (dp_names in dp_name) {
   
 }
 
-previous_meme <- readRDS('./R/previous_meme.RDS')
+previous_meme <<- readRDS('./R/previous_meme.RDS')
 
 already_tweeted <- gsub('./Memes/TodaysMemesFolder/','',previous_meme)
 
@@ -59,7 +59,7 @@ data$name <- gsub('Copy of ', '',data$name)
 
 
 
-for (meme in 1:nrow(raw_dat)) {
+for (meme in 1:nrow(data)) {
   
   drive_download(file = data$name[meme], path = paste0('./Memes/TodaysMemesFolder/',data$name[meme]),overwrite = TRUE)
 }
@@ -72,7 +72,11 @@ AllMemes = list.files(path = "./Memes/AllMemesFolder", pattern = ".jpg", full.na
 TodaysMemes = list.files(path = "./Memes/TodaysMemesFolder", pattern = ".jpg", full.names = TRUE)
 minus <- which(TodaysMemes == previous_meme)
 
-TodaysMemes = TodaysMemes[-minus]
+if(length(minus)>0){
+  TodaysMemes = TodaysMemes[-minus]
+}
+
+
 
 
 tweet_meme <- function(){
