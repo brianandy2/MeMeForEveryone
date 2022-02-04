@@ -11,6 +11,7 @@ token <- create_token(
 )
 
 
+
 drive_auth(path = Sys.getenv("GOOGLE_AUTHENTICATION_CREDENTIALS"))
 raw_dat <- drive_ls(as_id(Sys.getenv('MEME_FOLDER_1')))
 
