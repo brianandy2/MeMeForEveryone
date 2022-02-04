@@ -44,6 +44,10 @@ for (dp_names in dp_name) {
   
 }
 
+already_tweeted <- data %>% filter(name%in%already_tweeted)
+
+drive_rm(already_tweeted$id[1])
+
 data <- drive_ls(as_id(Sys.getenv('MEME_FOLDER_2')))
 
 data$name <- gsub('Copy of ', '',data$name)
