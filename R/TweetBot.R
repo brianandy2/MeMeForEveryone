@@ -56,7 +56,6 @@ JustNowMemes <- c(JustNowMemes_jpg,JustNowMemes_png)
 
 
 
-
 tweet_meme <- function(){
   
   if(length(JustNowMemes)>0){
