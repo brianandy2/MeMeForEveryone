@@ -44,11 +44,12 @@ previous_meme <- readRDS('./R/previous_meme.RDS')
 previous_meme <- gsub('./Memes/JustNowMemesFolder/','',previous_meme)
 
 #store new memes to the JustNowMemesFolder
+print(paste0('Download ',nrow(meme_for_tweet), ' new meme(s)'))
+if(nrow(meme_for_tweet)>=1){
 for (meme in 1:nrow(meme_for_tweet)) {
-  paste0('Download ',i, ' new meme(s)')
   drive_download(file = meme_for_tweet$name[meme], path = paste0('./Memes/JustNowMemesFolder/',meme_for_tweet$name[meme]),overwrite = TRUE)
 }
-
+}
 #get meme to tweet
 JustNowMemes_jpg = list.files(path = "./Memes/JustNowMemesFolder", pattern = "*.jpg", full.names = TRUE, ignore.case = TRUE)
 JustNowMemes_png = list.files(path = "./Memes/JustNowMemesFolder", pattern = "*.PNG", full.names = TRUE, ignore.case = TRUE)
@@ -112,7 +113,7 @@ tweet_meme <- function(){
       if(new_meme != old_meme){
         
         print('Tweet from the all-tweet folder')
-        tweeting_meme <- post_tweet(status = '#meme #memeforeveryone #memes #ilovememes #memesdaily',media = current_meme,token = token)
+        tweeting_meme <- post_tweet(status = '#meme #memeforeveryone #memes #ilovememes #memesdaily #AFCON2021',media = current_meme,token = token)
         saveRDS(current_meme, './R/previous_meme.RDS')
         break
         
