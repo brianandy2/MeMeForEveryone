@@ -28,7 +28,7 @@ for (meme in 1:nrow(data)) {
   
   drive_download(file = data$name[meme], path = paste0('./Memes/AllMemesFolder/',data$name[meme]),overwrite = TRUE)
 }
-
+paste0('The AllMemeFolder has ',nrow(data), ' memes')
 #Reading and cleaning up tweeted memes to be excluded in the next tweet
 TweetedMemes_png = list.files(path = "./Memes/TweetedMemesFolder", pattern = '*.png', full.names = TRUE, ignore.case = TRUE)
 TweetedMemes_jpg = list.files(path = "./Memes/TweetedMemesFolder", pattern = '*jpg', full.names = TRUE, ignore.case = TRUE)
@@ -45,7 +45,7 @@ previous_meme <- gsub('./Memes/JustNowMemesFolder/','',previous_meme)
 
 #store new memes to the JustNowMemesFolder
 for (meme in 1:nrow(meme_for_tweet)) {
-  
+  paste0('Download ',i, ' new meme(s)')
   drive_download(file = meme_for_tweet$name[meme], path = paste0('./Memes/JustNowMemesFolder/',meme_for_tweet$name[meme]),overwrite = TRUE)
 }
 
@@ -78,7 +78,7 @@ tweet_meme <- function(){
       if(new_meme != previous_meme){
         
         print('Todays tweet')
-        tweeting_meme <- post_tweet(status = '#meme #memeforeveryone #memes #ilovememes #memesdaily',media = current_meme,token = token)
+        tweeting_meme <- post_tweet(status = '#meme #memeforeveryone #memes #ilovememes #memesdaily #AFCON2021',media = current_meme,token = token)
         unlink(current_meme)
         saveRDS(current_meme, './R/previous_meme.RDS')
         break
@@ -111,7 +111,7 @@ tweet_meme <- function(){
     repeat{
       if(new_meme != old_meme){
         
-        print('from the all tweet folder')
+        print('Tweet from the all-tweet folder')
         tweeting_meme <- post_tweet(status = '#meme #memeforeveryone #memes #ilovememes #memesdaily',media = current_meme,token = token)
         saveRDS(current_meme, './R/previous_meme.RDS')
         break
