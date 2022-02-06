@@ -23,6 +23,20 @@ data <- drive_ls(as_id(Sys.getenv('MEME_FOLDER_2')))
 data$name <- gsub('Copy of ', '',data$name)
 
 
+remove_meme <- drive_ls(as_id(Sys.getenv('MEME_FOLDER_3')))
+
+#remove unsuitable meme
+unsuitable_meme <- data %>% filter(name%in%remove_meme$name)
+
+if(nrow(unsuitable_meme)>0){
+  for (i in 1:nrow(unsuitable_meme)) {
+    drive_rm(unsuitable_meme$id[i])
+  }
+  data <- drive_ls(as_id(Sys.getenv('MEME_FOLDER_2')))
+  data$name <- gsub('Copy of ', '',data$name)
+}
+
+
 #store all memes to the AllMemesFolder
 for (meme in 1:nrow(data)) {
   

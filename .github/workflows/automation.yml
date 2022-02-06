@@ -26,6 +26,7 @@ jobs:
           GOOGLE_AUTHENTICATION_CREDENTIALS: ${{ secrets.GOOGLE_AUTHENTICATION_CREDENTIALS }}
           MEME_FOLDER_1: ${{ secrets.MEME_FOLDER_1 }}
           MEME_FOLDER_2: ${{ secrets.MEME_FOLDER_2 }}
+          MEME_FOLDER_3: ${{ secrets.MEME_FOLDER_3 }}
         run: |
           source('R/TweetBot.R')
          
