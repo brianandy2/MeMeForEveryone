@@ -79,7 +79,7 @@ tweet_meme <- function(){
       if(new_meme != previous_meme){
         
         print('Todays tweet')
-        tweeting_meme <- post_tweet(status = '#meme #memeforeveryone #memes #ilovememes #memesdaily #AFCON2021',media = current_meme,token = token)
+        tweeting_meme <- post_tweet(status = '#meme #memeforeveryone #memes #ilovememes #memesdaily #AFCON2021 \U0001F923 \U0001F923 \U0001F923 \U0001f923 \U0001f602',media = current_meme,token = token)
         unlink(current_meme)
         saveRDS(current_meme, './R/previous_meme.RDS')
         break
@@ -113,7 +113,7 @@ tweet_meme <- function(){
       if(new_meme != old_meme){
         
         print('Tweet from the all-tweet folder')
-        tweeting_meme <- post_tweet(status = '#meme #memeforeveryone #memes #ilovememes #memesdaily #AFCON2021',media = current_meme,token = token)
+        tweeting_meme <- post_tweet(status = '#meme #memeforeveryone #memes #ilovememes #memesdaily #AFCON2021 \U0001F923 \U0001F923 \U0001F923 \U0001f923 \U0001f602',media = current_meme,token = token)
         saveRDS(current_meme, './R/previous_meme.RDS')
         break
         
