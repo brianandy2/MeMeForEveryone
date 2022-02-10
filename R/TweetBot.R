@@ -1,6 +1,7 @@
 library(rtweet)
 library(googledrive)
 library(dplyr)
+library(magick)
 
 token <- create_token(
   app = Sys.getenv("TWEET_BOT"),
@@ -77,6 +78,13 @@ tweet_meme <- function(){
     
     current_meme = sample(JustNowMemes, size = 1,replace = FALSE)
     
+    image_to_mark <- magick::image_read(current_meme)
+    image_to_mark <- magick::image_resize(image_to_mark,"1200x675")
+    image_to_mark <- magick::image_annotate(image_to_mark, "@mem3foreveryone", size = 50, gravity = "southeast", color = "red",
+                                    location = "+20+100")
+    magick::image_write(image_to_mark, format = 'jpg', path = current_meme)
+    
+    
     new_meme <- gsub('./Memes/JustNowMemesFolder/','',current_meme)
     
     if(previous_meme==new_meme){
@@ -122,6 +130,7 @@ tweet_meme <- function(){
     
     new_meme <- gsub('./Memes/AllMemesFolder/','',current_meme)
     old_meme <- gsub('./Memes/AllMemesFolder/','',previous_meme)
+    
     
     repeat{
       if(new_meme != old_meme){
