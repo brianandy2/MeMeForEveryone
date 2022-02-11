@@ -11,7 +11,6 @@ token <- create_token(
   access_secret = Sys.getenv("TWEET_BOT_ACCESS_SECRET")
 )
 
-
 drive_auth(path = Sys.getenv("GOOGLE_AUTHENTICATION_CREDENTIALS"))
 raw_dat <- drive_ls(as_id(Sys.getenv('MEME_FOLDER_1')))
 
