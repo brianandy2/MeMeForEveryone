@@ -84,7 +84,6 @@ tweet_meme <- function(){
                                     location = "+20+100")
     magick::image_write(image_to_mark, format = 'jpg', path = current_meme)
     
-    
     new_meme <- gsub('./Memes/JustNowMemesFolder/','',current_meme)
     
     if(previous_meme==new_meme){
