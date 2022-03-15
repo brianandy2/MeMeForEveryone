@@ -36,6 +36,15 @@ if(nrow(unsuitable_meme)>0){
   data$name <- gsub('Copy of ', '',data$name)
 }
 
+#if there more memes clear some to create space
+if(nrow(data)>70){
+  
+  for (i in 2:nrow(data)) {
+    drive_rm(data$id[i])
+  }
+  
+}
+
 
 #store all memes to the AllMemesFolder
 for (meme in 1:nrow(data)) {
